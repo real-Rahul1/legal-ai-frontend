@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyay Mitra — Your Legal Friend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+  <!-- Background pattern -->
+  <div class="bg-pattern"></div>
+  <div class="grain"></div>
+
+  <!-- Nav -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-icon">⚖️</span>
+      <span class="logo-text">Nyay <span class="accent">Mitra</span></span>
+    </div>
+    <div class="nav-right" style="display:flex;align-items:center;gap:1rem;">
+      <div class="nav-tagline" data-i18n="navTagline">न्याय मित्र</div>
+      <div id="langSwitcherContainer"></div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="hero-badge" data-i18n="heroBadge">🇮🇳 Built for Indian Citizens</div>
+    <h1 class="hero-title">
+      <span data-i18n="heroTitle1">Know Your</span><br/>
+      <span class="title-highlight" data-i18n="heroTitle2">Rights.</span><br/>
+      <span data-i18n="heroTitle3">Assert Your</span><br/>
+      <span class="title-highlight" data-i18n="heroTitle4">Freedom.</span>
+    </h1>
+    <p class="hero-sub" data-i18n="heroSub">
+      Police stopped you? Landlord trouble? Workplace harassment?
+      Get instant legal guidance based on Indian laws — in plain language.
+    </p>
+
+    <div class="cta-block">
+      <a href="chat.html" class="start-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span data-i18n="startBtn">Start Chatting — Free &amp; Instant</span>
+      </a>
+      <p class="login-note" data-i18n="loginNote">No sign-up required. Ask your legal question right away.</p>
+    </div>
+
+    <!-- Feature pills -->
+    <div class="features-row">
+      <div class="feature-pill" data-i18n="pill1">🚔 Police &amp; Arrest Rights</div>
+      <div class="feature-pill" data-i18n="pill2">🏍️ Traffic Laws</div>
+      <div class="feature-pill" data-i18n="pill3">🏠 Property &amp; Rent</div>
+      <div class="feature-pill" data-i18n="pill4">👷 Labour Rights</div>
+      <div class="feature-pill" data-i18n="pill5">🛒 Consumer Protection</div>
+      <div class="feature-pill" data-i18n="pill6">👨‍👩‍👧 Family Law</div>
+    </div>
+  </main>
+
+  <!-- Laws section -->
+  <section class="laws-section">
+    <h2 class="laws-title" data-i18n="lawsTitle">Grounded in Indian Law</h2>
+    <div class="laws-grid">
+      <div class="law-card">
+        <div class="law-num">IPC</div>
+        <div class="law-name">Indian Penal Code</div>
+      </div>
+      <div class="law-card">
+        <div class="law-num">CrPC</div>
+        <div class="law-name">Criminal Procedure Code</div>
+      </div>
+      <div class="law-card">
+        <div class="law-num">Art. 21</div>
+        <div class="law-name">Right to Life &amp; Liberty</div>
+      </div>
+      <div class="law-card">
+        <div class="law-num">MVA</div>
+        <div class="law-name">Motor Vehicles Act, 1988</div>
+      </div>
+      <div class="law-card">
+        <div class="law-num">RTI</div>
+        <div class="law-name">Right to Information Act</div>
+      </div>
+      <div class="law-card">
+        <div class="law-num">CPA</div>
+        <div class="law-name">Consumer Protection Act, 2019</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-i18n="footerDisclaimer" data-i18n-html="true">⚖️ <strong>Nyay Mitra</strong> provides legal information, not legal advice. For court matters, consult a licensed advocate.</p>
+    <p class="footer-small" data-i18n="footerEmergency" data-i18n-html="true">Emergency: <strong>100</strong> (Police) | <strong>112</strong> (National Emergency) | <strong>1091</strong> (Women Helpline)</p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script>
+    LangManager.init();
+    buildLangSwitcher('langSwitcherContainer');
+    applyTranslations();
+  </script>
+</body>
+</html>

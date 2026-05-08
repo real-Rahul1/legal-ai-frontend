@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nyay Mitra — Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/chat.css" />
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="/" class="sidebar-logo">
+        <span>⚖️</span>
+        <span class="sidebar-logo-text">Nyay <span class="acc">Mitra</span></span>
+      </a>
+      <button class="new-chat-btn" id="newChatBtn" title="New Chat">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        <span data-i18n="newQuery">New Query</span>
+      </button>
+      <!-- Language switcher injected here -->
+      <div id="langSwitcherContainer"></div>
+    </div>
+
+    <!-- Quick questions -->
+    <div class="quick-section">
+      <div class="quick-label" data-i18n="quickLabel">Quick Questions</div>
+      <div class="quick-items">
+        <button class="quick-item" data-i18n-data-q="q1text" data-q="Police just stopped my bike. What are my rights and what documents do I need to show?"><span data-i18n="q1">🏍️ Police stopped my bike</span></button>
+        <button class="quick-item" data-i18n-data-q="q2text" data-q="I have been arrested. What are my rights during arrest under Indian law?"><span data-i18n="q2">🚔 I've been arrested</span></button>
+        <button class="quick-item" data-i18n-data-q="q3text" data-q="My landlord is trying to evict me illegally. What are my rights as a tenant in India?"><span data-i18n="q3">🏠 Illegal eviction threat</span></button>
+        <button class="quick-item" data-i18n-data-q="q4text" data-q="My employer is not paying my salary. What legal options do I have under Indian labour law?"><span data-i18n="q4">💼 Employer not paying salary</span></button>
+        <button class="quick-item" data-i18n-data-q="q5text" data-q="I bought a defective product online. How can I file a consumer complaint in India?"><span data-i18n="q5">🛒 Defective product complaint</span></button>
+        <button class="quick-item" data-i18n-data-q="q6text" data-q="I want to file an RTI application. How do I do it and what can I ask for?"><span data-i18n="q6">📄 How to file RTI</span></button>
+      </div>
+    </div>
+
+    <!-- Chat history -->
+    <div class="history-section">
+      <div class="history-label" data-i18n="recentChats">Recent Chats</div>
+      <div class="history-list" id="historyList">
+        <div class="history-loading" data-i18n="loadingHistory">Loading history...</div>
+      </div>
+    </div>
+
+    <!-- Sidebar footer -->
+    <div class="sidebar-footer">
+      <p class="sidebar-note">⚖️ Nyay Mitra — Legal Info for Indian Citizens</p>
+    </div>
+  </aside>
+
+  <!-- Mobile toggle -->
+  <button class="mobile-sidebar-toggle" id="sidebarToggle">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <!-- Main chat area -->
+  <main class="chat-main">
+    <!-- Welcome screen -->
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="welcome-icon">⚖️</div>
+      <h2 class="welcome-title" data-i18n="welcomeTitle">Namaste! I'm Nyay Mitra</h2>
+      <p class="welcome-sub" data-i18n="welcomeSub">Your AI-powered Indian Legal Assistant. Ask me anything about your rights, laws, and legal procedures in India.</p>
+      <div class="welcome-chips">
+        <div class="chip" id="chip1" data-i18n="chip1">Fundamental Rights</div>
+        <div class="chip" id="chip2" data-i18n="chip2">How to file FIR</div>
+        <div class="chip" id="chip3" data-i18n="chip3">Section 498A IPC</div>
+        <div class="chip" id="chip4" data-i18n="chip4">Traffic Stop Rights</div>
+      </div>
+      <div class="disclaimer-box">
+        <span>⚠️</span>
+        <span data-i18n="disclaimer" data-i18n-html="true">Nyay Mitra provides legal <strong>information</strong>, not legal advice. For court matters or complex situations, please consult a licensed advocate.</span>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="messages-container" id="messagesContainer" style="display:none;">
+      <div class="messages-list" id="messagesList"></div>
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+      <div class="input-wrapper">
+        <textarea
+          id="messageInput"
+          class="message-input"
+          data-i18n-placeholder="inputPlaceholder"
+          placeholder="Ask your legal question in English or Hindi..."
+          rows="1"
+          maxlength="2000"
+        ></textarea>
+        <div class="input-actions">
+          <span class="char-count" id="charCount">0/2000</span>
+          <button class="send-btn" id="sendBtn" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="input-note" data-i18n="inputNote" data-i18n-html="true">Emergency: <strong>100</strong> Police | <strong>112</strong> National | <strong>1091</strong> Women</p>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>\n  <script src="js/i18n.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

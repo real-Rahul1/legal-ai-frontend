@@ -306,6 +306,7 @@ function adjustTextarea() {
 
 function closeSidebar() {
   sidebar.classList.remove('open');
+  sidebarToggle.classList.remove('hidden');
 }
 
 function sendQuickMsg(text) {
@@ -336,6 +337,7 @@ newChatBtn.addEventListener('click', () => {
 });
 sidebarToggle.addEventListener('click', () => {
   sidebar.classList.toggle('open');
+  sidebarToggle.classList.toggle('hidden', sidebar.classList.contains('open'));
 });
 
 // Quick questions in sidebar — use translated data-q
@@ -351,6 +353,7 @@ document.addEventListener('click', (e) => {
   if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
     if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
       sidebar.classList.remove('open');
+      sidebarToggle.classList.remove('hidden');
     }
   }
 });
